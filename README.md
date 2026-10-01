@@ -1,10 +1,10 @@
 # SecureShopGMMT
 
-| # | Activo | Tipo | ¿Qué consecuencia tiene para Secure Shop que este activo sea accedido, modificado o quede indisponible? |
-|---|---|---|---|
-| 1 | Datos personales de usuarios | Información | Podría provocar exposición de información privada, alteración de datos personales o impedir la correcta gestión de los usuarios. |
-| 2 | Base de datos de usuarios | Datos | Podrían robarse, modificarse o eliminarse cuentas y datos, afectando el acceso y funcionamiento de las cuentas de los clientes. |
-| 3 | Microservicio de usuarios | Software | Podría permitir operaciones no autorizadas, alterar la gestión de usuarios o impedir el acceso y administración de cuentas. |
+| # | Activo | Tipo | ¿Qué consecuencia tiene para Secure Shop que este activo sea accedido, modificado o quede indisponible? |3 amenazas | ¿Cómo funcionarían las amenazas en Secure Shop? | 3 mecanismos de mitigación | Etapa del ciclo de vida |
+|---|---|---|---|---|---|---|---|
+| 1 | Datos personales de usuarios | Información | Podría provocar exposición de información privada, alteración de datos personales o impedir la correcta gestión de los usuarios. | 1. Exposición de información.2. Interceptación de datos.3. Modificación no autorizada. | Los datos podrían ser consultados mediante endpoints sin autorización, interceptados durante la comunicación o modificados por usuarios que no son sus propietarios. | 1. Control de acceso y mínimo privilegio.2. HTTPS/TLS.3. Autorización y validación por recurso. | Diseño, Implementación y Pruebas |
+| 2 | Base de datos de usuarios | Datos | Podrían robarse, modificarse o eliminarse cuentas y datos, afectando el acceso y funcionamiento de las cuentas de los clientes. | 1. Inyección SQL.2. Acceso no autorizado.3. Pérdida de datos. | Un atacante podría ejecutar consultas maliciosas, acceder directamente a la BD o provocar la eliminación de información de usuarios. | 1. Consultas parametrizadas y ORM.2. Gestión segura de credenciales y permisos mínimos.3. Backups periódicos. | Diseño, Implementación, Pruebas y Mantenimiento |
+| 3 | Microservicio de usuarios | Software | Podría permitir operaciones no autorizadas, alterar la gestión de usuarios o impedir el acceso y administración de cuentas. | 1. Escalada de privilegios.2. Denegación de servicio.3. Explotación de vulnerabilidades. | Un usuario podría obtener funciones administrativas, saturar el servicio con solicitudes o aprovechar vulnerabilidades del código o sus dependencias. | 1. RBAC y autorización por endpoint.2. Rate limiting.3. SAST y actualización de dependencias. | Diseño, Implementación, Pruebas y Mantenimiento |
 | 4 | Catálogo de productos | Información | Podrían conocerse o modificarse precios, características y disponibilidad de productos, o impedir que los clientes consulten el catálogo. |
 | 5 | Base de datos de productos | Datos | Podrían alterarse o eliminarse productos, precios y stock, causando información incorrecta y problemas en las ventas. |
 | 6 | Microservicio de productos | Software | Podría manipularse la gestión de productos o dejar a la tienda sin capacidad para consultar y administrar su catálogo. |
