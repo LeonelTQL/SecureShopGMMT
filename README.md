@@ -12,3 +12,8 @@
 | 8 | Base de datos de órdenes | Datos | Podrían consultarse, modificarse o eliminarse órdenes, impidiendo mantener un registro confiable y procesar correctamente las compras. |
 | 9 | Microservicio de órdenes | Servicio | Podrían ejecutarse operaciones no autorizadas, manipular pedidos o impedir que los clientes creen y gestionen órdenes. |
 | 10 | API Gateway | Infraestructura | Podría permitir acceso no autorizado o manipulación de las comunicaciones y, si queda indisponible, impedir el acceso a todos los microservicios de Secure Shop. |
+| 11 | Credenciales de usuarios | Información | El acceso o modificación no autorizada podría permitir la suplantación de usuarios y el acceso a funciones restringidas; su indisponibilidad impediría la autenticación. |
+| 12 | Tokens de autenticación | Datos | Si son obtenidos o alterados, un atacante podría suplantar sesiones y realizar acciones sin autorización; si no están disponibles, los usuarios podrían perder acceso a los servicios protegidos. |
+| 13 | Configuración del API Gateway | Software | Su acceso o modificación podría revelar o alterar rutas, controles de acceso y políticas de seguridad; su indisponibilidad podría afectar la comunicación con los microservicios. |
+| 14 | Servidor de despliegue | Infraestructura | Un acceso o modificación no autorizada podría comprometer la ejecución de la aplicación; si queda indisponible, los servicios de Secure Shop podrían dejar de funcionar. |
+| 15 | Logs y registros de auditoría | Datos | Su acceso podría revelar información sensible, su modificación permitiría ocultar actividades maliciosas y su indisponibilidad dificultaría detectar e investigar incidentes de seguridad. |
