@@ -10,5 +10,5 @@
 | 6 | Microservicio de productos | Software | Podría manipularse la gestión de productos o dejar a la tienda sin capacidad para consultar y administrar su catálogo. |
 | 7 | Información de órdenes | Información | Podrían exponerse o modificarse compras, cantidades, clientes y valores, afectando la privacidad y confiabilidad de los pedidos. |
 | 8 | Base de datos de órdenes | Datos | Podrían consultarse, modificarse o eliminarse órdenes, impidiendo mantener un registro confiable y procesar correctamente las compras. |
-| 9 |  |  |  |
-| 10 |  |  |  |
+| 9 | Microservicio de órdenes | Servicio | Podrían ejecutarse operaciones no autorizadas, manipular pedidos o impedir que los clientes creen y gestionen órdenes. |
+| 10 | API Gateway | Infraestructura | Podría permitir acceso no autorizado o manipulación de las comunicaciones y, si queda indisponible, impedir el acceso a todos los microservicios de Secure Shop. |
