@@ -1,0 +1,16 @@
+cwe,owasp2025,api2023,tipo_relacion,justificacion,fuente_top10,fuente_api
+CWE-22,A01:2025,,mapeo_oficial_top10,Path traversal en Benchmark,https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/,
+CWE-78,A05:2025,,mapeo_oficial_top10,Inyeccion de comandos,https://top10.owasp.org/2025/A05_2025-Injection/,
+CWE-79,A05:2025,,mapeo_oficial_top10,Cross-site scripting,https://top10.owasp.org/2025/A05_2025-Injection/,
+CWE-89,A05:2025,,mapeo_oficial_top10,Inyeccion SQL,https://top10.owasp.org/2025/A05_2025-Injection/,
+CWE-90,A05:2025,,mapeo_oficial_top10,Inyeccion LDAP,https://top10.owasp.org/2025/A05_2025-Injection/,
+CWE-643,A05:2025,,mapeo_oficial_top10,Inyeccion XPath,https://top10.owasp.org/2025/A05_2025-Injection/,
+CWE-327,A04:2025,,mapeo_oficial_top10,Algoritmo criptografico inseguro,https://top10.owasp.org/2025/A04_2025-Cryptographic_Failures/,
+CWE-328,A04:2025,,mapeo_oficial_top10,Hash debil,https://top10.owasp.org/2025/A04_2025-Cryptographic_Failures/,
+CWE-330,A04:2025,,mapeo_oficial_top10,Aleatoriedad insuficiente,https://top10.owasp.org/2025/A04_2025-Cryptographic_Failures/,
+CWE-614,A02:2025,,mapeo_oficial_top10,Cookie sin atributo Secure,https://top10.owasp.org/2025/A02_2025-Security_Misconfiguration/,
+CWE-639,A01:2025,API1:2023,top10_oficial_api_por_contexto,ID controlado por cliente accede a objeto privado sin comprobar propietario,https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/,https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/
+CWE-287,A07:2025,API2:2023,top10_oficial_api_por_contexto,Identidad o credencial sin validacion adecuada en API,https://top10.owasp.org/2025/A07_2025-Authentication_Failures/,https://api-security.owasp.org/editions/2023/en/0xa2-broken-authentication/
+CWE-862,A01:2025,API3:2023,top10_oficial_api_por_contexto,Falta autorizacion sobre propiedades privilegiadas modificables por payload; asignacion masiva como mecanismo relacionado con CWE-915,https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/,https://api-security.owasp.org/editions/2023/en/0xa3-broken-object-property-level-authorization/
+CWE-862,A01:2025,API5:2023,top10_oficial_api_por_contexto,Operacion administrativa sin autorizacion de funcion,https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/,https://api-security.owasp.org/editions/2023/en/0xa5-broken-function-level-authorization/
+CWE-489,A02:2025,API8:2023,top10_oficial_api_por_contexto,Modo debug activo en configuracion de API desplegada en produccion,https://top10.owasp.org/2025/A02_2025-Security_Misconfiguration/,https://api-security.owasp.org/editions/2023/en/0xa8-security-misconfiguration/

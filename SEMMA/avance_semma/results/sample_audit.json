@@ -1,0 +1,38 @@
+{
+  "records": 2680,
+  "safe_targeted": 1313,
+  "vulnerable": 1367,
+  "unique_code": 2680,
+  "groups": 921,
+  "duplicates_removed": 4,
+  "conflicting_records_excluded": 0,
+  "splits": {
+    "train": 2001,
+    "test": 341,
+    "validation": 338
+  },
+  "languages": {
+    "Java": 2610,
+    "Python": 70
+  },
+  "sources": {
+    "OWASP Benchmark Java 1.2": 2610,
+    "controlled": 70
+  },
+  "evaluated_labels": [
+    "A01:2025",
+    "A02:2025",
+    "A04:2025",
+    "A05:2025",
+    "A07:2025",
+    "API1:2023",
+    "API2:2023",
+    "API3:2023",
+    "API5:2023",
+    "API8:2023"
+  ],
+  "group_overlap": 0,
+  "exact_code_overlap": 0,
+  "clone_grouping": "Connected components: character 5-gram TF-IDF cosine >= 0.90 OR equal structural hash. Grouping uses no labels.",
+  "limitation": "Clone grouping is heuristic. Semantic near clones can remain. Benchmark split is within one source project; external project evaluation remains pending."
+}

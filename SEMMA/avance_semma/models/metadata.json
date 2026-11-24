@@ -1,0 +1,34 @@
+{
+  "candidate": "rf_150_depth20",
+  "family": "random_forest",
+  "threshold": 0.3,
+  "criterion": "Maximum validation category F1 macro; binary F1 then fit time break ties.",
+  "validation_category_f1_macro": 0.8459872200472868,
+  "test_used_for_selection": false,
+  "refit_on_validation": false,
+  "dataset_sha256": "0c42cd801c75cff46b688be800b966f0de4266c17ea51545733319e82d0e1b63",
+  "python": "3.14.6",
+  "packages": {
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0"
+  },
+  "labels": [
+    "vulnerable",
+    "A01:2025",
+    "A02:2025",
+    "A04:2025",
+    "A05:2025",
+    "A07:2025",
+    "API1:2023",
+    "API2:2023",
+    "API3:2023",
+    "API5:2023",
+    "API8:2023"
+  ],
+  "input_contract": "UTF-8 code snippets, same granularity as training; no repository discovery",
+  "score_calibration": "not calibrated",
+  "safety": "Load trusted joblib files only."
+}

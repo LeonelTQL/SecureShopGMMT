@@ -1,0 +1,1883 @@
+record_id,source,language,true_labels,true_vulnerable,predicted_labels,predicted_vulnerable,score_vulnerable,status,public_categories,false_positive_labels,false_negative_labels,code,source_url,diagnosis
+BenchmarkTest00278,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.4563062021444552,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        java.util.Enumeration<String> headers = request.getHeaders(""Referer"");
+        if (headers != null && headers.hasMoreElements()) {
+            param = headers.nextElement();
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = org.springframework.web.util.HtmlUtils.htmlEscape(param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().print(bar);
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00278.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00283,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5146589429593863,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        java.util.Enumeration<String> headers = request.getHeaders(""Referer"");
+        if (headers != null && headers.hasMoreElements()) {
+            param = headers.nextElement();
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().println(bar.toCharArray());
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00283.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00285,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5334882112520692,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        java.util.Enumeration<String> headers = request.getHeaders(""Referer"");
+        if (headers != null && headers.hasMoreElements()) {
+            param = headers.nextElement();
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().println(bar);
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00285.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00289,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5136991293662133,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        java.util.Enumeration<String> headers = request.getHeaders(""Referer"");
+        if (headers != null && headers.hasMoreElements()) {
+            param = headers.nextElement();
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().write(bar);
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00289.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00406,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.39121372905021007,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = request.getParameter(""BenchmarkCase"");
+        if (param == null) param = """";
+        String bar;
+        int num = 86;
+        if ((7 * 42) - num > 200) bar = ""This_should_always_happen"";
+        else bar = param;
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""echo"");
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ping -c1 "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00406.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00408,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.32834837252473886,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = request.getParameter(""BenchmarkCase"");
+        if (param == null) param = """";
+        String bar;
+        int num = 86;
+        if ((7 * 42) - num > 200) bar = ""This_should_always_happen"";
+        else bar = param;
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00408.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00738,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.36400973094496253,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String[] values = request.getParameterValues(""BenchmarkCase"");
+        String param;
+        if (values != null && values.length > 0) param = values[0];
+        else param = """";
+        String bar;
+        int num = 86;
+        if ((7 * 42) - num > 200) bar = ""This_should_always_happen"";
+        else bar = param;
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00738.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00739,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.34860164010757005,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String[] values = request.getParameterValues(""BenchmarkCase"");
+        String param;
+        if (values != null && values.length > 0) param = values[0];
+        else param = """";
+        String bar;
+        int num = 106;
+        bar = (7 * 18) + num > 200 ? ""This_should_always_happen"" : param;
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00739.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00827,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.31131819732139426,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = ""alsosafe"";
+        if (param != null) {
+            java.util.List<String> valuesList = new java.util.ArrayList<String>();
+            valuesList.add(""safe"");
+            valuesList.add(param);
+            valuesList.add(""moresafe"");
+            valuesList.remove(0);
+            bar = valuesList.get(1);
+        }
+        String cmd =
+                org.owasp.benchmark.helpers.Utils.getInsecureOSCommandString(
+                        this.getClass().getClassLoader());
+        String[] argsEnv = {bar};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(cmd, argsEnv, new java.io.File(System.getProperty(""user.dir"")));
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00827.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00861,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3340140086820138,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar;
+        String guess = ""ABC"";
+        char switchTarget = guess.charAt(2);
+        switch (switchTarget) {
+            case 'A':
+                bar = param;
+                break;
+            case 'B':
+                bar = ""bobs_your_uncle"";
+                break;
+            case 'C':
+            case 'D':
+                bar = param;
+                break;
+            default:
+                bar = ""bobs_your_uncle"";
+                break;
+        }
+        org.owasp.benchmark.helpers.LDAPManager ads = new org.owasp.benchmark.helpers.LDAPManager();
+        try {
+            response.setContentType(""text/html;charset=UTF-8"");
+            javax.naming.directory.DirContext ctx = ads.getDirContext();
+            String base = ""ou=users,ou=system"";
+            javax.naming.directory.SearchControls sc = new javax.naming.directory.SearchControls();
+            sc.setSearchScope(javax.naming.directory.SearchControls.SUBTREE_SCOPE);
+            String filter = ""(&(objectclass=person)(uid="" + bar + ""))"";
+            boolean found = false;
+            javax.naming.NamingEnumeration<javax.naming.directory.SearchResult> results =
+                    ctx.search(base, filter, sc);
+            while (results.hasMore()) {
+                javax.naming.directory.SearchResult sr =
+                        (javax.naming.directory.SearchResult) results.next();
+                javax.naming.directory.Attributes attrs = sr.getAttributes();
+                javax.naming.directory.Attribute attr = attrs.get(""uid"");
+                javax.naming.directory.Attribute attr2 = attrs.get(""street"");
+                if (attr != null) {
+                    response.getWriter()
+                            .println(
+                                    ""LDAP query results:<br>""
+                                            + ""Record found with name ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr.get().toString())
+                                            + ""<br>Address: ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr2.get().toString())
+                                            + ""<br>"");
+                    found = true;
+                }
+            }
+            if (!found) {
+                response.getWriter()
+                        .println(
+                                ""LDAP query results: nothing found for query: ""
+                                        + org.owasp.esapi.ESAPI.encoder().encodeForHTML(filter));
+            }
+        } catch (javax.naming.NamingException e) {
+            throw new ServletException(e);
+        } finally {
+            try {
+                ads.closeDirContext();
+            } catch (Exception e) {
+                throw new ServletException(e);
+            }
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00861.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00867,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3492701267856078,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = """";
+        if (param != null) {
+            java.util.List<String> valuesList = new java.util.ArrayList<String>();
+            valuesList.add(""safe"");
+            valuesList.add(param);
+            valuesList.add(""moresafe"");
+            valuesList.remove(0);
+            bar = valuesList.get(0);
+        }
+        String fileName = org.owasp.benchmark.helpers.Utils.TESTFILES_DIR + bar;
+        java.io.InputStream is = null;
+        try {
+            java.nio.file.Path path = java.nio.file.Paths.get(fileName);
+            is = java.nio.file.Files.newInputStream(path, java.nio.file.StandardOpenOption.READ);
+            byte[] b = new byte[1000];
+            int size = is.read(b);
+            response.getWriter()
+                    .println(
+                            ""The beginning of file: '""
+                                    + org.owasp.esapi.ESAPI.encoder().encodeForHTML(fileName)
+                                    + ""' is:\n\n"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(new String(b, 0, size)));
+            is.close();
+        } catch (Exception e) {
+            System.out.println(""Couldn't open InputStream on file: '"" + fileName + ""'"");
+            response.getWriter()
+                    .println(
+                            ""Problem getting InputStream: ""
+                                    + org.owasp
+                                            .esapi
+                                            .ESAPI
+                                            .encoder()
+                                            .encodeForHTML(e.getMessage()));
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                    is = null;
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00867.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00897,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.349916652047262,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar;
+        String guess = ""ABC"";
+        char switchTarget = guess.charAt(2);
+        switch (switchTarget) {
+            case 'A':
+                bar = param;
+                break;
+            case 'B':
+                bar = ""bobs_your_uncle"";
+                break;
+            case 'C':
+            case 'D':
+                bar = param;
+                break;
+            default:
+                bar = ""bobs_your_uncle"";
+                break;
+        }
+        String a1 = """";
+        String a2 = """";
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+        }
+        String[] args = {a1, a2, ""echo "" + bar};
+        ProcessBuilder pb = new ProcessBuilder(args);
+        try {
+            Process p = pb.start();
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(
+                    ""Problem executing cmdi - java.lang.ProcessBuilder(java.lang.String[]) Test Case"");
+            throw new ServletException(e);
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00897.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00905,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.49529372975991853,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = param;
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""echo"");
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ping -c1 "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00905.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00906,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5698863061915841,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = """";
+        if (param != null) {
+            bar =
+                    new String(
+                            org.apache.commons.codec.binary.Base64.decodeBase64(
+                                    org.apache.commons.codec.binary.Base64.encodeBase64(
+                                            param.getBytes())));
+        }
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""echo"");
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ping -c1 "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00906.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest00938,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3005792787831766,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = """";
+        if (param != null) {
+            bar =
+                    new String(
+                            org.apache.commons.codec.binary.Base64.decodeBase64(
+                                    org.apache.commons.codec.binary.Base64.encodeBase64(
+                                            param.getBytes())));
+        }
+        String sql = ""SELECT * from USERS where USERNAME='foo' and PASSWORD='"" + bar + ""'"";
+        try {
+            java.sql.Statement statement =
+                    org.owasp.benchmark.helpers.DatabaseHelper.getSqlStatement();
+            statement.execute(sql, new String[] {""username"", ""password""});
+            org.owasp.benchmark.helpers.DatabaseHelper.printResults(statement, sql, response);
+        } catch (java.sql.SQLException e) {
+            if (org.owasp.benchmark.helpers.DatabaseHelper.hideSQLErrors) {
+                response.getWriter().println(""Error processing request."");
+            } else throw new ServletException(e);
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest00938.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01048,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5970031416932995,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        if (request.getHeader(""Referer"") != null) {
+            param = request.getHeader(""Referer"");
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        Object[] obj = {""a"", ""b""};
+        response.getWriter().format(java.util.Locale.US, bar, obj);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.springframework.web.util.HtmlUtils.htmlEscape(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01048.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01054,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5244045863506014,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        if (request.getHeader(""Referer"") != null) {
+            param = request.getHeader(""Referer"");
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().println(bar);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.springframework.web.util.HtmlUtils.htmlEscape(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01054.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01065,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3369842803802429,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        if (request.getHeader(""BenchmarkCase"") != null) {
+            param = request.getHeader(""BenchmarkCase"");
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""echo"");
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ping -c1 "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar;
+            int num = 86;
+            if ((7 * 42) - num > 200) bar = ""This_should_always_happen"";
+            else bar = param;
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01065.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01188,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.49018649832699207,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        java.util.Enumeration<String> headers = request.getHeaders(""Referer"");
+        if (headers != null && headers.hasMoreElements()) {
+            param = headers.nextElement();
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().write(""Parameter value: "" + bar);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01188.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01189,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.34672337921509977,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        java.util.Enumeration<String> headers = request.getHeaders(""BenchmarkCase"");
+        if (headers != null && headers.hasMoreElements()) {
+            param = headers.nextElement();
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""echo"");
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ping -c1 "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar;
+            int num = 86;
+            if ((7 * 42) - num > 200) bar = ""This_should_always_happen"";
+            else bar = param;
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01189.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01193,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3455594494911156,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        java.util.Enumeration<String> headers = request.getHeaders(""BenchmarkCase"");
+        if (headers != null && headers.hasMoreElements()) {
+            param = headers.nextElement();
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv, new java.io.File(System.getProperty(""user.dir"")));
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar;
+            int num = 86;
+            if ((7 * 42) - num > 200) bar = ""This_should_always_happen"";
+            else bar = param;
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01193.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01264,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.30202739157092734,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = request.getParameter(""BenchmarkCase"");
+        if (param == null) param = """";
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().println(bar);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01264.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01467,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3290103462069208,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        boolean flag = true;
+        java.util.Enumeration<String> names = request.getParameterNames();
+        while (names.hasMoreElements() && flag) {
+            String name = (String) names.nextElement();
+            String[] values = request.getParameterValues(name);
+            if (values != null) {
+                for (int i = 0; i < values.length && flag; i++) {
+                    String value = values[i];
+                    if (value.equals(""BenchmarkCase"")) {
+                        param = name;
+                        flag = false;
+                    }
+                }
+            }
+        }
+        String bar = new Test().doSomething(request, param);
+        String sql = ""SELECT * from USERS where USERNAME='foo' and PASSWORD='"" + bar + ""'"";
+        try {
+            java.util.List<java.util.Map<String, Object>> list =
+                    org.owasp.benchmark.helpers.DatabaseHelper.JDBCtemplate.queryForList(sql);
+            response.getWriter().println(""Your results are: <br>"");
+            for (Object o : list) {
+                response.getWriter()
+                        .println(
+                                org.owasp.esapi.ESAPI.encoder().encodeForHTML(o.toString())
+                                        + ""<br>"");
+            }
+        } catch (org.springframework.dao.EmptyResultDataAccessException e) {
+            response.getWriter()
+                    .println(
+                            ""No results returned for query: ""
+                                    + org.owasp.esapi.ESAPI.encoder().encodeForHTML(sql));
+        } catch (org.springframework.dao.DataAccessException e) {
+            if (org.owasp.benchmark.helpers.DatabaseHelper.hideSQLErrors) {
+                response.getWriter().println(""Error processing request."");
+            } else throw new ServletException(e);
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = ""safe!"";
+            java.util.HashMap<String, Object> map34856 = new java.util.HashMap<String, Object>();
+            map34856.put(""keyA-34856"", ""a_Value"");
+            map34856.put(""keyB-34856"", param);
+            map34856.put(""keyC"", ""another_Value"");
+            bar = (String) map34856.get(""keyB-34856"");
+            bar = (String) map34856.get(""keyA-34856"");
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01467.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01529,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3341463346433994,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheParameter(""BenchmarkCase"");
+        if (param == null) param = """";
+        String bar = new Test().doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""echo"");
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ping -c1 "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar;
+            int num = 106;
+            bar = (7 * 18) + num > 200 ? ""This_should_always_happen"" : param;
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01529.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01659,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.6616274369874688,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().print(bar);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.springframework.web.util.HtmlUtils.htmlEscape(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01659.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01661,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.6239024131828297,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        Object[] obj = {""a"", bar};
+        response.getWriter().printf(java.util.Locale.US, ""Formatted like: %1$s and %2$s."", obj);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.springframework.web.util.HtmlUtils.htmlEscape(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01661.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01664,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.8548256223213544,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().println(bar.toCharArray());
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01664.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01669,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.8414922889880211,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().println(bar);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01669.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01671,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.8414922889880211,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = new Test().doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().write(bar);
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01671.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01743,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.37502082393882913,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = new Test().doSomething(request, param);
+        org.owasp.benchmark.helpers.LDAPManager ads = new org.owasp.benchmark.helpers.LDAPManager();
+        try {
+            response.setContentType(""text/html;charset=UTF-8"");
+            javax.naming.directory.DirContext ctx = ads.getDirContext();
+            String base = ""ou=users,ou=system"";
+            javax.naming.directory.SearchControls sc = new javax.naming.directory.SearchControls();
+            sc.setSearchScope(javax.naming.directory.SearchControls.SUBTREE_SCOPE);
+            String filter = ""(&(objectclass=person))(|(uid="" + bar + "")(street={0}))"";
+            Object[] filters = new Object[] {""The streetz 4 Ms bar""};
+            boolean found = false;
+            javax.naming.NamingEnumeration<javax.naming.directory.SearchResult> results =
+                    ctx.search(base, filter, filters, sc);
+            while (results.hasMore()) {
+                javax.naming.directory.SearchResult sr =
+                        (javax.naming.directory.SearchResult) results.next();
+                javax.naming.directory.Attributes attrs = sr.getAttributes();
+                javax.naming.directory.Attribute attr = attrs.get(""uid"");
+                javax.naming.directory.Attribute attr2 = attrs.get(""street"");
+                if (attr != null) {
+                    response.getWriter()
+                            .println(
+                                    ""LDAP query results:<br>""
+                                            + ""Record found with name ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr.get().toString())
+                                            + ""<br>Address: ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr2.get().toString())
+                                            + ""<br>"");
+                    found = true;
+                }
+            }
+            if (!found) {
+                response.getWriter()
+                        .println(
+                                ""LDAP query results: nothing found for query: ""
+                                        + org.owasp.esapi.ESAPI.encoder().encodeForHTML(filter));
+            }
+        } catch (javax.naming.NamingException e) {
+            throw new ServletException(e);
+        } finally {
+            try {
+                ads.closeDirContext();
+            } catch (Exception e) {
+                throw new ServletException(e);
+            }
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = """";
+            if (param != null) {
+                bar =
+                        new String(
+                                org.apache.commons.codec.binary.Base64.decodeBase64(
+                                        org.apache.commons.codec.binary.Base64.encodeBase64(
+                                                param.getBytes())));
+            }
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01743.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01753,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.38168749060549584,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = new Test().doSomething(request, param);
+        org.owasp.benchmark.helpers.LDAPManager ads = new org.owasp.benchmark.helpers.LDAPManager();
+        try {
+            response.setContentType(""text/html;charset=UTF-8"");
+            String base = ""ou=users,ou=system"";
+            javax.naming.directory.SearchControls sc = new javax.naming.directory.SearchControls();
+            sc.setSearchScope(javax.naming.directory.SearchControls.SUBTREE_SCOPE);
+            String filter = ""(&(objectclass=person))(|(uid="" + bar + "")(street={0}))"";
+            Object[] filters = new Object[] {""The streetz 4 Ms bar""};
+            javax.naming.directory.DirContext ctx = ads.getDirContext();
+            javax.naming.directory.InitialDirContext idc =
+                    (javax.naming.directory.InitialDirContext) ctx;
+            boolean found = false;
+            javax.naming.NamingEnumeration<javax.naming.directory.SearchResult> results =
+                    idc.search(base, filter, filters, sc);
+            while (results.hasMore()) {
+                javax.naming.directory.SearchResult sr =
+                        (javax.naming.directory.SearchResult) results.next();
+                javax.naming.directory.Attributes attrs = sr.getAttributes();
+                javax.naming.directory.Attribute attr = attrs.get(""uid"");
+                javax.naming.directory.Attribute attr2 = attrs.get(""street"");
+                if (attr != null) {
+                    response.getWriter()
+                            .println(
+                                    ""LDAP query results:<br>""
+                                            + ""Record found with name ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr.get().toString())
+                                            + ""<br>Address: ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr2.get().toString())
+                                            + ""<br>"");
+                    found = true;
+                }
+            }
+            if (!found) {
+                response.getWriter()
+                        .println(
+                                ""LDAP query results: nothing found for query: ""
+                                        + org.owasp.esapi.ESAPI.encoder().encodeForHTML(filter));
+            }
+        } catch (javax.naming.NamingException e) {
+            throw new ServletException(e);
+        } finally {
+            try {
+                ads.closeDirContext();
+            } catch (Exception e) {
+                throw new ServletException(e);
+            }
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = """";
+            if (param != null) {
+                bar =
+                        new String(
+                                org.apache.commons.codec.binary.Base64.decodeBase64(
+                                        org.apache.commons.codec.binary.Base64.encodeBase64(
+                                                param.getBytes())));
+            }
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01753.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01754,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3270926512343406,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = new Test().doSomething(request, param);
+        org.owasp.benchmark.helpers.LDAPManager ads = new org.owasp.benchmark.helpers.LDAPManager();
+        try {
+            response.setContentType(""text/html;charset=UTF-8"");
+            String base = ""ou=users,ou=system"";
+            javax.naming.directory.SearchControls sc = new javax.naming.directory.SearchControls();
+            sc.setSearchScope(javax.naming.directory.SearchControls.SUBTREE_SCOPE);
+            String filter = ""(&(objectclass=person))(|(uid="" + bar + "")(street={0}))"";
+            Object[] filters = new Object[] {""The streetz 4 Ms bar""};
+            javax.naming.directory.DirContext ctx = ads.getDirContext();
+            javax.naming.directory.InitialDirContext idc =
+                    (javax.naming.directory.InitialDirContext) ctx;
+            boolean found = false;
+            javax.naming.NamingEnumeration<javax.naming.directory.SearchResult> results =
+                    idc.search(base, filter, filters, sc);
+            while (results.hasMore()) {
+                javax.naming.directory.SearchResult sr =
+                        (javax.naming.directory.SearchResult) results.next();
+                javax.naming.directory.Attributes attrs = sr.getAttributes();
+                javax.naming.directory.Attribute attr = attrs.get(""uid"");
+                javax.naming.directory.Attribute attr2 = attrs.get(""street"");
+                if (attr != null) {
+                    response.getWriter()
+                            .println(
+                                    ""LDAP query results:<br>""
+                                            + ""Record found with name ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr.get().toString())
+                                            + ""<br>Address: ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr2.get().toString())
+                                            + ""<br>"");
+                    found = true;
+                }
+            }
+            if (!found) {
+                response.getWriter()
+                        .println(
+                                ""LDAP query results: nothing found for query: ""
+                                        + org.owasp.esapi.ESAPI.encoder().encodeForHTML(filter));
+            }
+        } catch (javax.naming.NamingException e) {
+            throw new ServletException(e);
+        } finally {
+            try {
+                ads.closeDirContext();
+            } catch (Exception e) {
+                throw new ServletException(e);
+            }
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = ""safe!"";
+            java.util.HashMap<String, Object> map91865 = new java.util.HashMap<String, Object>();
+            map91865.put(""keyA-91865"", ""a-Value"");
+            map91865.put(""keyB-91865"", param);
+            map91865.put(""keyC"", ""another-Value"");
+            bar = (String) map91865.get(""keyB-91865"");
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01754.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01755,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.32042598456767396,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = new Test().doSomething(request, param);
+        org.owasp.benchmark.helpers.LDAPManager ads = new org.owasp.benchmark.helpers.LDAPManager();
+        try {
+            response.setContentType(""text/html;charset=UTF-8"");
+            String base = ""ou=users,ou=system"";
+            javax.naming.directory.SearchControls sc = new javax.naming.directory.SearchControls();
+            sc.setSearchScope(javax.naming.directory.SearchControls.SUBTREE_SCOPE);
+            String filter = ""(&(objectclass=person)(uid="" + bar + ""))"";
+            javax.naming.directory.DirContext ctx = ads.getDirContext();
+            javax.naming.directory.InitialDirContext idc =
+                    (javax.naming.directory.InitialDirContext) ctx;
+            boolean found = false;
+            javax.naming.NamingEnumeration<javax.naming.directory.SearchResult> results =
+                    idc.search(base, filter, sc);
+            while (results.hasMore()) {
+                javax.naming.directory.SearchResult sr =
+                        (javax.naming.directory.SearchResult) results.next();
+                javax.naming.directory.Attributes attrs = sr.getAttributes();
+                javax.naming.directory.Attribute attr = attrs.get(""uid"");
+                javax.naming.directory.Attribute attr2 = attrs.get(""street"");
+                if (attr != null) {
+                    response.getWriter()
+                            .println(
+                                    ""LDAP query results:<br>""
+                                            + ""Record found with name ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr.get().toString())
+                                            + ""<br>Address: ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr2.get().toString())
+                                            + ""<br>"");
+                    found = true;
+                }
+            }
+            if (!found) {
+                response.getWriter()
+                        .println(
+                                ""LDAP query results: nothing found for query: ""
+                                        + org.owasp.esapi.ESAPI.encoder().encodeForHTML(filter));
+            }
+        } catch (javax.naming.NamingException e) {
+            throw new ServletException(e);
+        } finally {
+            try {
+                ads.closeDirContext();
+            } catch (Exception e) {
+                throw new ServletException(e);
+            }
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = ""safe!"";
+            java.util.HashMap<String, Object> map69635 = new java.util.HashMap<String, Object>();
+            map69635.put(""keyA-69635"", ""a-Value"");
+            map69635.put(""keyB-69635"", param);
+            map69635.put(""keyC"", ""another-Value"");
+            bar = (String) map69635.get(""keyB-69635"");
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01755.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01792,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5038854160854476,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = new Test().doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar = param;
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01792.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01794,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.6076829471147039,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = new Test().doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv, new java.io.File(System.getProperty(""user.dir"")));
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar;
+            int num = 196;
+            if ((500 / 42) + num > 200) bar = param;
+            else bar = ""This should never happen"";
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01794.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01814,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.4747141793726871,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        org.owasp.benchmark.helpers.SeparateClassRequest scr =
+                new org.owasp.benchmark.helpers.SeparateClassRequest(request);
+        String param = scr.getTheValue(""BenchmarkCase"");
+        String bar = new Test().doSomething(request, param);
+        String sql = ""SELECT  * from USERS where USERNAME='foo' and PASSWORD='"" + bar + ""'"";
+        try {
+            org.springframework.jdbc.support.rowset.SqlRowSet results =
+                    org.owasp.benchmark.helpers.DatabaseHelper.JDBCtemplate.queryForRowSet(sql);
+            response.getWriter().println(""Your results are: "");
+            while (results.next()) {
+                response.getWriter()
+                        .println(
+                                org.owasp
+                                                .esapi
+                                                .ESAPI
+                                                .encoder()
+                                                .encodeForHTML(results.getString(""USERNAME""))
+                                        + "" "");
+            }
+        } catch (org.springframework.dao.EmptyResultDataAccessException e) {
+            response.getWriter()
+                    .println(
+                            ""No results returned for query: ""
+                                    + org.owasp.esapi.ESAPI.encoder().encodeForHTML(sql));
+        } catch (org.springframework.dao.DataAccessException e) {
+            if (org.owasp.benchmark.helpers.DatabaseHelper.hideSQLErrors) {
+                response.getWriter().println(""Error processing request."");
+            } else throw new ServletException(e);
+        }
+    }
+    private class Test {
+        public String doSomething(HttpServletRequest request, String param)
+                throws ServletException, IOException {
+            String bar;
+            String guess = ""ABC"";
+            char switchTarget = guess.charAt(2);
+            switch (switchTarget) {
+                case 'A':
+                    bar = param;
+                    break;
+                case 'B':
+                    bar = ""bobs_your_uncle"";
+                    break;
+                case 'C':
+                case 'D':
+                    bar = param;
+                    break;
+                default:
+                    bar = ""bobs_your_uncle"";
+                    break;
+            }
+            return bar;
+        }
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01814.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest01924,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.5635125935099541,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = """";
+        if (request.getHeader(""Referer"") != null) {
+            param = request.getHeader(""Referer"");
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        Object[] obj = {""a"", ""b""};
+        response.getWriter().printf(bar, obj);
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar = org.springframework.web.util.HtmlUtils.htmlEscape(param);
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest01924.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02125,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3316538137865665,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = request.getParameter(""BenchmarkCase"");
+        if (param == null) param = """";
+        String bar = doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().print(bar);
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02125.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02149,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3283615271085918,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String param = request.getParameter(""BenchmarkCase"");
+        if (param == null) param = """";
+        String bar = doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv);
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar;
+        int num = 106;
+        bar = (7 * 18) + num > 200 ? ""This_should_always_happen"" : param;
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02149.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02252,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.3484393536540386,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        java.util.Map<String, String[]> map = request.getParameterMap();
+        String param = """";
+        if (!map.isEmpty()) {
+            String[] values = map.get(""BenchmarkCase"");
+            if (values != null) param = values[0];
+        }
+        String bar = doSomething(request, param);
+        String cmd = """";
+        String a1 = """";
+        String a2 = """";
+        String[] args = null;
+        String osName = System.getProperty(""os.name"");
+        if (osName.indexOf(""Windows"") != -1) {
+            a1 = ""cmd.exe"";
+            a2 = ""/c"";
+            cmd = ""echo "";
+            args = new String[] {a1, a2, cmd, bar};
+        } else {
+            a1 = ""sh"";
+            a2 = ""-c"";
+            cmd = org.owasp.benchmark.helpers.Utils.getOSCommandString(""ls "");
+            args = new String[] {a1, a2, cmd + bar};
+        }
+        String[] argsEnv = {""foo=bar""};
+        Runtime r = Runtime.getRuntime();
+        try {
+            Process p = r.exec(args, argsEnv, new java.io.File(System.getProperty(""user.dir"")));
+            org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);
+        } catch (IOException e) {
+            System.out.println(""Problem executing cmdi - TestCase"");
+            response.getWriter()
+                    .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));
+            return;
+        }
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar;
+        int num = 86;
+        if ((7 * 42) - num > 200) bar = ""This_should_always_happen"";
+        else bar = param;
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02252.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02553,OWASP Benchmark Java 1.2,Java,[],0,[],1,0.34115190977399923,pendiente_revision,[],"[""vulnerable""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = doSomething(request, param);
+        org.owasp.benchmark.helpers.LDAPManager ads = new org.owasp.benchmark.helpers.LDAPManager();
+        try {
+            response.setContentType(""text/html;charset=UTF-8"");
+            javax.naming.directory.DirContext ctx = ads.getDirContext();
+            String base = ""ou=users,ou=system"";
+            javax.naming.directory.SearchControls sc = new javax.naming.directory.SearchControls();
+            sc.setSearchScope(javax.naming.directory.SearchControls.SUBTREE_SCOPE);
+            String filter = ""(&(objectclass=person))(|(uid="" + bar + "")(street={0}))"";
+            Object[] filters = new Object[] {""The streetz 4 Ms bar""};
+            boolean found = false;
+            javax.naming.NamingEnumeration<javax.naming.directory.SearchResult> results =
+                    ctx.search(base, filter, filters, sc);
+            while (results.hasMore()) {
+                javax.naming.directory.SearchResult sr =
+                        (javax.naming.directory.SearchResult) results.next();
+                javax.naming.directory.Attributes attrs = sr.getAttributes();
+                javax.naming.directory.Attribute attr = attrs.get(""uid"");
+                javax.naming.directory.Attribute attr2 = attrs.get(""street"");
+                if (attr != null) {
+                    response.getWriter()
+                            .println(
+                                    ""LDAP query results:<br>""
+                                            + ""Record found with name ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr.get().toString())
+                                            + ""<br>Address: ""
+                                            + org.owasp
+                                                    .esapi
+                                                    .ESAPI
+                                                    .encoder()
+                                                    .encodeForHTML(attr2.get().toString())
+                                            + ""<br>"");
+                    found = true;
+                }
+            }
+            if (!found) {
+                response.getWriter()
+                        .println(
+                                ""LDAP query results: nothing found for query: ""
+                                        + org.owasp.esapi.ESAPI.encoder().encodeForHTML(filter));
+            }
+        } catch (javax.naming.NamingException e) {
+            throw new ServletException(e);
+        } finally {
+            try {
+                ads.closeDirContext();
+            } catch (Exception e) {
+                throw new ServletException(e);
+            }
+        }
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar = ""safe!"";
+        java.util.HashMap<String, Object> map11026 = new java.util.HashMap<String, Object>();
+        map11026.put(""keyA-11026"", ""a_Value"");
+        map11026.put(""keyB-11026"", param);
+        map11026.put(""keyC"", ""another_Value"");
+        bar = (String) map11026.get(""keyB-11026"");
+        bar = (String) map11026.get(""keyA-11026"");
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02553.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02581,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.6006646606995861,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        Object[] obj = {""a"", ""b""};
+        response.getWriter().format(bar, obj);
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar = org.apache.commons.lang.StringEscapeUtils.escapeHtml(param);
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02581.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02596,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.8117538237638748,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().println(bar);
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02596.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02601,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.638113051244965,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        int length = 1;
+        if (bar != null) {
+            length = bar.length();
+            response.getWriter().write(bar.toCharArray(), 0, length);
+        }
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar = org.apache.commons.lang.StringEscapeUtils.escapeHtml(param);
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02601.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+BenchmarkTest02609,OWASP Benchmark Java 1.2,Java,[],0,"[""A05:2025""]",1,0.7934998555099065,hallazgo_potencial,"[""A05:2025""]","[""vulnerable"", ""A05:2025""]",[],"public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType(""text/html;charset=UTF-8"");
+        String queryString = request.getQueryString();
+        String paramval = ""BenchmarkCase"" + ""="";
+        int paramLoc = -1;
+        if (queryString != null) paramLoc = queryString.indexOf(paramval);
+        if (paramLoc == -1) {
+            response.getWriter()
+                    .println(
+                            ""getQueryString() couldn't find expected parameter '""
+                                    + ""BenchmarkCase""
+                                    + ""' in query string."");
+            return;
+        }
+        String param =
+                queryString.substring(
+                        paramLoc
+                                + paramval
+                                        .length());
+        int ampersandLoc = queryString.indexOf(""&"", paramLoc);
+        if (ampersandLoc != -1) {
+            param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
+        }
+        param = java.net.URLDecoder.decode(param, ""UTF-8"");
+        String bar = doSomething(request, param);
+        response.setHeader(""X-XSS-Protection"", ""0"");
+        response.getWriter().write(""Parameter value: "" + bar);
+    }
+    private static String doSomething(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        String bar = org.owasp.esapi.ESAPI.encoder().encodeForHTML(param);
+        return bar;
+    }
+}",https://github.com/OWASP-Benchmark/BenchmarkJava/blob/10dfcc54ad02dcfcb358b0ba4a0fef8c919a6d17/src/main/java/org/owasp/benchmark/testcode/BenchmarkTest02609.java,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+control-object_authorization-6-1,controlled,Python,"[""A01:2025"", ""API1:2023""]",1,"[""A01:2025"", ""API1:2023"", ""API5:2023""]",1,0.6028970137574529,hallazgo_potencial,"[""A01:2025"", ""API1:2023"", ""API5:2023""]","[""API5:2023""]",[],"def get_ticket(ticket_id, user):
+    ticket = tickets.fetch(ticket_id)
+    return ticket.details",src/controlled.py,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+control-object_authorization-6-0,controlled,Python,[],0,"[""A01:2025""]",1,0.4584202599768301,hallazgo_potencial,"[""A01:2025""]","[""vulnerable"", ""A01:2025""]",[],"def get_ticket(ticket_id, user):
+    ticket = tickets.fetch(ticket_id)
+    if ticket.tenant_id != user.tenant_id:
+        raise PermissionError()
+    return ticket.details",src/controlled.py,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+control-authentication-6-0,controlled,Python,[],0,"[""A07:2025"", ""API2:2023""]",1,0.4494636403615735,hallazgo_potencial,"[""A07:2025"", ""API2:2023""]","[""vulnerable"", ""A07:2025"", ""API2:2023""]",[],"def identity(request):
+    session_id = request.cookies['session']
+    return sessions.require_authenticated(session_id)",src/controlled.py,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+control-property_authorization-6-0,controlled,Python,[],0,[],1,0.33881328897064106,pendiente_revision,[],"[""vulnerable""]",[],"def update(user, payload):
+    model = Profile(display_name=payload['display_name'])
+    user.merge(model)",src/controlled.py,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+control-function_authorization-6-1,controlled,Python,"[""A01:2025"", ""API5:2023""]",1,"[""A01:2025"", ""API3:2023"", ""API5:2023""]",1,0.5903298887045567,hallazgo_potencial,"[""A01:2025"", ""API3:2023"", ""API5:2023""]","[""API3:2023""]",[],"def stop_service(user, service_id):
+    orchestrator.stop(service_id)",src/controlled.py,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+control-function_authorization-6-0,controlled,Python,[],0,"[""A01:2025"", ""API3:2023""]",1,0.4581123037829755,hallazgo_potencial,"[""A01:2025"", ""API3:2023""]","[""vulnerable"", ""A01:2025"", ""API3:2023""]",[],"def stop_service(user, service_id):
+    access_control.require(user, 'services:stop')
+    orchestrator.stop(service_id)",src/controlled.py,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."
+control-configuration-6-0,controlled,Python,[],0,"[""A02:2025""]",1,0.42470775553561896,hallazgo_potencial,"[""A02:2025""]","[""vulnerable"", ""A02:2025""]",[],"server = make_server(debug=False)
+server.serve()",src/controlled.py,"Revisar flujo de datos, guardas y contexto; hipótesis, no causa probada."

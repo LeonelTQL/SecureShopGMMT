@@ -1,0 +1,10 @@
+{
+  "candidate": "rf_150_depth20",
+  "family": "random_forest",
+  "threshold": 0.3,
+  "criterion": "Maximum validation category F1 macro; binary F1 then fit time break ties.",
+  "validation_category_f1_macro": 0.8459872200472868,
+  "test_used_for_selection": false,
+  "refit_on_validation": false,
+  "dataset_sha256": "0c42cd801c75cff46b688be800b966f0de4266c17ea51545733319e82d0e1b63"
+}

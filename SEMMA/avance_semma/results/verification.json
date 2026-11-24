@@ -1,0 +1,38 @@
+{
+  "records": 2680,
+  "test_records": 341,
+  "unique_codes": true,
+  "disjoint_clone_groups": true,
+  "all_labels_have_positive_and_negative_examples_in_each_split": true,
+  "saved_model_matches_reported_metrics": true,
+  "serialization_roundtrip": true,
+  "inference_does_not_fit_vectorizer": true,
+  "notebooks": [
+    {
+      "name": "01_sample.ipynb",
+      "executed": true
+    },
+    {
+      "name": "02_explore.ipynb",
+      "executed": true
+    },
+    {
+      "name": "03_modify.ipynb",
+      "executed": true
+    },
+    {
+      "name": "04_model.ipynb",
+      "executed": true
+    },
+    {
+      "name": "05_assess.ipynb",
+      "executed": true
+    }
+  ],
+  "pending": [
+    "CLI integration",
+    "functional scan of unseen microservice project",
+    "external real-project generalization",
+    "human review of controlled labels"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "binary_precision": 0.771689497716895,
+  "binary_recall": 1.0,
+  "binary_f1": 0.8711340206185567,
+  "category_precision_macro": 0.7096119929453263,
+  "category_recall_macro": 1.0,
+  "category_f1_macro": 0.8040254706533776,
+  "category_f1_micro": 0.9182058047493403,
+  "hamming_loss": 0.00909090909090909,
+  "subset_accuracy": 0.9149560117302052
+}

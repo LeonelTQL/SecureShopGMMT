@@ -1,0 +1,101 @@
+[
+  {
+    "potential_vulnerability": true,
+    "categories": [
+      "A05:2025"
+    ],
+    "status": "hallazgo_potencial",
+    "vulnerability_score": 0.9288424021409483,
+    "category_scores": {
+      "A01:2025": 0.006666666666666667,
+      "A02:2025": 0.0,
+      "A04:2025": 0.0,
+      "A05:2025": 0.907597486990525,
+      "A07:2025": 0.0,
+      "API1:2023": 0.0,
+      "API2:2023": 0.0,
+      "API3:2023": 0.0,
+      "API5:2023": 0.0,
+      "API8:2023": 0.0
+    },
+    "unevaluated_categories": [
+      "A03:2025",
+      "A06:2025",
+      "A08:2025",
+      "A09:2025",
+      "A10:2025",
+      "API4:2023",
+      "API6:2023",
+      "API7:2023",
+      "API9:2023",
+      "API10:2023"
+    ],
+    "note": "Probabilidades sin calibración; no certifica seguridad ni confirma vulnerabilidades."
+  },
+  {
+    "potential_vulnerability": true,
+    "categories": [
+      "A01:2025"
+    ],
+    "status": "hallazgo_potencial",
+    "vulnerability_score": 0.8392590404565178,
+    "category_scores": {
+      "A01:2025": 0.8131109040463155,
+      "A02:2025": 0.0,
+      "A04:2025": 0.0,
+      "A05:2025": 0.006666666666666667,
+      "A07:2025": 0.0,
+      "API1:2023": 0.0,
+      "API2:2023": 0.0,
+      "API3:2023": 0.0,
+      "API5:2023": 0.0,
+      "API8:2023": 0.0
+    },
+    "unevaluated_categories": [
+      "A03:2025",
+      "A06:2025",
+      "A08:2025",
+      "A09:2025",
+      "A10:2025",
+      "API4:2023",
+      "API6:2023",
+      "API7:2023",
+      "API9:2023",
+      "API10:2023"
+    ],
+    "note": "Probabilidades sin calibración; no certifica seguridad ni confirma vulnerabilidades."
+  },
+  {
+    "potential_vulnerability": true,
+    "categories": [
+      "A05:2025"
+    ],
+    "status": "hallazgo_potencial",
+    "vulnerability_score": 0.68404412839227,
+    "category_scores": {
+      "A01:2025": 0.059891598915989164,
+      "A02:2025": 0.0,
+      "A04:2025": 0.02666666666666667,
+      "A05:2025": 0.47938199034571216,
+      "A07:2025": 0.0,
+      "API1:2023": 0.0,
+      "API2:2023": 0.0,
+      "API3:2023": 0.0,
+      "API5:2023": 0.0,
+      "API8:2023": 0.006666666666666667
+    },
+    "unevaluated_categories": [
+      "A03:2025",
+      "A06:2025",
+      "A08:2025",
+      "A09:2025",
+      "A10:2025",
+      "API4:2023",
+      "API6:2023",
+      "API7:2023",
+      "API9:2023",
+      "API10:2023"
+    ],
+    "note": "Probabilidades sin calibración; no certifica seguridad ni confirma vulnerabilidades."
+  }
+]

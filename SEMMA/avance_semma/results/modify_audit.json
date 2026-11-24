@@ -1,0 +1,34 @@
+{
+  "fit_partition": "train",
+  "metadata_used_as_features": false,
+  "vocabulary_size": 2686,
+  "shapes": {
+    "train": [
+      2001,
+      2686
+    ],
+    "validation": [
+      338,
+      2686
+    ],
+    "test": [
+      341,
+      2686
+    ]
+  },
+  "class_balance_strategy": "class_weight=balanced en cada clasificador binario; sin sobremuestrear validation/test",
+  "targets": [
+    "vulnerable",
+    "A01:2025",
+    "A02:2025",
+    "A04:2025",
+    "A05:2025",
+    "A07:2025",
+    "API1:2023",
+    "API2:2023",
+    "API3:2023",
+    "API5:2023",
+    "API8:2023"
+  ],
+  "input": "code only, comments and benchmark IDs removed"
+}
